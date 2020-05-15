@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 
 import styled from 'styled-components'
 import { theme } from '../config/theme'
@@ -7,8 +7,12 @@ import { theme } from '../config/theme'
 import ErrorSignException from '../exceptions/ErrorSignException'
 
 import { signIn, signUp } from '../utils/APISign'
+import {
+  checkAuthentication,
+  SECURITY_ACCESS
+} from '../utils/AuthenticationProvider'
 
-import { Toast, ToastSuccess, ToastError } from '../components/generic/Toast'
+import { Toast, ToastError } from '../components/generic/Toast'
 
 import { ContainerScreen } from '../components/generic/Container'
 import Loader from '../components/loader/Loader'
@@ -48,15 +52,13 @@ const WelcomeScreen = () => {
         setLoading({ active: true, color: theme.colors['bg-secondary'] })
         if (form.context === 'signin') {
           response = await signIn(form.email, form.password)
-          ToastSuccess("Great, you've successfully logged in!")
         }
         if (form.context === 'signup') {
           response = await signUp(form.email, form.password)
-          ToastSuccess("Great, you've successfully registered!")
         }
 
-        localStorage.setItem('partyz_access', JSON.stringify(response))
-        history.push('/home')
+        localStorage.setItem(SECURITY_ACCESS, JSON.stringify(response))
+        history.push('/home', { authenticated: true })
       } catch (err) {
         setLoading(false)
         if (err instanceof ErrorSignException) {
@@ -68,7 +70,7 @@ const WelcomeScreen = () => {
     }
   }
 
-  return (
+  return checkAuthentication() === false ? (
     <ContainerScreen bgColor={theme.colors['bg-secondary']}>
       <Toast />
       {(welcomeState || loading.active) && (
@@ -94,6 +96,8 @@ const WelcomeScreen = () => {
       </WrapperWelcome>
       <Footer />
     </ContainerScreen>
+  ) : (
+    <Redirect to='/home' />
   )
 }
 
