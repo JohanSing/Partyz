@@ -21,20 +21,20 @@ const WelcomeSignUpFormComponent = ({
     email: '',
     password: ''
   })
-  const [propertyAnimation, setPositionComponent] = useState({
+  const [propertyAnimation, setPropertyAnimation] = useState({
     display: 'none',
     height: '0px'
   })
 
   useEffect(() => {
     if (authState === 'signup') {
-      setPositionComponent({ display: 'flex', height: '400px' })
+      setPropertyAnimation({ display: 'flex', height: '400px' })
     }
 
     if (authState === null || authState === 'signin') {
-      setPositionComponent({ height: '0px' })
+      setPropertyAnimation({ height: '0px' })
       setTimeout(() => {
-        setPositionComponent({ display: 'none' })
+        setPropertyAnimation({ display: 'none' })
       }, 600)
     }
   }, [authState])
