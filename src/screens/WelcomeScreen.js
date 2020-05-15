@@ -11,6 +11,7 @@ import { signIn, signUp } from '../utils/APISign'
 import { Toast, ToastSuccess, ToastError } from '../components/generic/Toast'
 
 import { ContainerScreen } from '../components/generic/Container'
+import Loader from '../components/loader/Loader'
 import WelcomeLogoComponent from '../components/welcome/WelcomeLogoComponent'
 import WelcomePitchComponent from '../components/welcome/WelcomePitchComponent'
 import WelcomeSignButtonComponent from '../components/welcome/WelcomeSignButtonComponent'
@@ -21,12 +22,21 @@ import Footer from '../components/footer/Footer'
 const WelcomeScreen = () => {
   const history = useHistory()
   const [authState, setAuthState] = useState(null)
+  const [welcomeState, setWelcomeState] = useState(true)
+  const [loading, setLoading] = useState({
+    active: false,
+    color: theme.colors['bg-primary']
+  })
 
   const displayFormSign = key => {
     setAuthState(key)
   }
 
-  useEffect(() => {}, [authState])
+  useEffect(() => {
+    setTimeout(() => {
+      setWelcomeState(false)
+    }, 3000)
+  }, [authState])
 
   const sendForm = async form => {
     if (!form.email || !form.password) {
@@ -35,6 +45,7 @@ const WelcomeScreen = () => {
       let response = null
 
       try {
+        setLoading({ active: true, color: theme.colors['bg-secondary'] })
         if (form.context === 'signin') {
           response = await signIn(form.email, form.password)
           ToastSuccess("Great, you've successfully logged in!")
@@ -47,6 +58,7 @@ const WelcomeScreen = () => {
         localStorage.setItem('partyz_access', JSON.stringify(response))
         history.push('/home')
       } catch (err) {
+        setLoading(false)
         if (err instanceof ErrorSignException) {
           ToastError(err.message)
         } else {
@@ -59,10 +71,16 @@ const WelcomeScreen = () => {
   return (
     <ContainerScreen bgColor={theme.colors['bg-secondary']}>
       <Toast />
+      {(welcomeState || loading.active) && (
+        <Loader top={480} color={loading.color} />
+      )}
       <WrapperWelcome>
         <WelcomeLogoComponent />
         <WelcomePitchComponent />
-        <WelcomeSignButtonComponent displayForm={displayFormSign} />
+        <WelcomeSignButtonComponent
+          welcomeState={welcomeState}
+          displayForm={displayFormSign}
+        />
         <WelcomeSignInFormComponent
           authState={authState}
           setAuthState={setAuthState}

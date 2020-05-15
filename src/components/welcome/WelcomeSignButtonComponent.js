@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { motion } from 'framer-motion'
 
 import { theme } from '../../config/theme'
 
 import { WrapperButton } from '../generic/Wrapper'
 import ButtonComponent from '../generic/ButtonComponent'
 
-const WelcomeSignButtonComponent = ({ displayForm }) => {
+const WelcomeSignButtonComponent = ({ welcomeState, displayForm }) => {
+  const [propertyAnimation, setPropertyAnimation] = useState({
+    display: 'none',
+    opacity: 0
+  })
+
+  useEffect(() => {
+    if (!welcomeState) {
+      setPropertyAnimation({ display: 'flex', opacity: 1 })
+    }
+  }, [welcomeState])
+
   return (
-    <Wrapper>
+    <Wrapper
+      animate={{
+        display: propertyAnimation.display,
+        opacity: propertyAnimation.opacity
+      }}
+      transition={{ duration: 1 }}
+    >
       <WrapperButton margin={'20px 0 0 0'}>
         <ButtonComponent
           text='Sign In'
@@ -35,11 +53,11 @@ const WelcomeSignButtonComponent = ({ displayForm }) => {
 }
 
 WelcomeSignButtonComponent.propTypes = {
+  welcomeState: PropTypes.bool,
   displayForm: PropTypes.func
 }
 
-const Wrapper = styled.div`
-  display: flex;
+const Wrapper = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   margin-top: 40px;
