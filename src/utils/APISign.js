@@ -1,11 +1,10 @@
 import axios from 'axios'
 
 import ErrorSignException from '../exceptions/ErrorSignException'
-import CONFIG_API from '../config/config'
 import User from '../models/User'
 
-const URL_SIGNUP = `${CONFIG_API.API_URL}auth/local/register`
-const URL_SIGNIN = `${CONFIG_API.API_URL}auth/local`
+const URL_SIGNUP = `${process.env.REACT_APP_API_DOMAIN}auth/local/register`
+const URL_SIGNIN = `${process.env.REACT_APP_API_DOMAIN}auth/local`
 
 const signUp = async (email, password) => {
   let response = null
