@@ -10,7 +10,9 @@ const ButtonComponent = ({
   bgColor,
   fontColor,
   height,
-  width
+  width,
+  borderRadius,
+  fontSize
 }) => {
   return (
     <ButtonElement
@@ -19,6 +21,8 @@ const ButtonComponent = ({
       fontColor={fontColor}
       height={height}
       width={width}
+      borderRadius={borderRadius}
+      fontSize={fontSize}
     >
       {text}
     </ButtonElement>
@@ -31,7 +35,9 @@ ButtonComponent.propTypes = {
   bgColor: PropTypes.string,
   fontColor: PropTypes.string,
   height: PropTypes.number,
-  width: PropTypes.number
+  width: PropTypes.number,
+  borderRadius: PropTypes.string,
+  fontSize: PropTypes.number
 }
 
 const ButtonElement = styled(Button)``
