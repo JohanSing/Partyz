@@ -1,5 +1,5 @@
 class User {
-  constructor(id, email, role, authentication) {
+  constructor(id, email, role, authentication = null) {
     this.id = id
     this.email = email
     this.role = role
