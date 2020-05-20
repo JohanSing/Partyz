@@ -7,8 +7,8 @@ import { theme } from '../../config/theme'
 
 import { ContainerForm } from '../generic/Container'
 import { WrapperInput, WrapperButton } from '../generic/Wrapper'
-import InputComponent from '../form/InputComponent'
-import ButtonSubmitComponent from '../form/ButtonSubmitComponent'
+import Input from '../form/Input'
+import Button from '../generic/Button'
 import ButtonBack from '../generic/ButtonBack'
 
 const WelcomeSignUpFormComponent = ({
@@ -64,7 +64,7 @@ const WelcomeSignUpFormComponent = ({
         />
         <FormSign onSubmit={handleSubmit}>
           <WrapperInput width={20} margin={'20px 0 0 0'}>
-            <InputComponent
+            <Input
               name='email'
               type='text'
               placeholder='E-mail'
@@ -72,12 +72,12 @@ const WelcomeSignUpFormComponent = ({
               onChangeAction={setFormSignUpState}
               bgColor={theme.colors['btn-fourth']}
               fontColor={theme.colors['btn-primary']}
-              height={60}
-              width={130}
+              height={'60px'}
+              width={'70%'}
             />
           </WrapperInput>
           <WrapperInput width={20} margin={'20px 0 0 0'}>
-            <InputComponent
+            <Input
               name='password'
               type='password'
               placeholder='Password'
@@ -85,17 +85,18 @@ const WelcomeSignUpFormComponent = ({
               onChangeAction={setFormSignUpState}
               bgColor={theme.colors['btn-fourth']}
               fontColor={theme.colors['btn-primary']}
-              height={60}
-              width={130}
+              height={'60px'}
+              width={'70%'}
             />
           </WrapperInput>
           <WrapperButton margin={'40px 0 0 0'}>
-            <ButtonSubmitComponent
+            <Button
+              type={'submit'}
               text='Create an account 🚀'
               bgColor={theme.colors['btn-terciary']}
               fontColor={theme.colors['font-secondary']}
-              height={60}
-              width={120}
+              height={'60px'}
+              width={'70%'}
             />
           </WrapperButton>
         </FormSign>

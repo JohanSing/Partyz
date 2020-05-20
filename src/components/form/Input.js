@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { theme } from '../../config/theme'
 
-const InputComponent = ({
+const Input = ({
   name,
   type,
   placeholder,
@@ -18,10 +18,10 @@ const InputComponent = ({
   width
 }) => {
   return (
-    <Input
+    <InputComponent
       type={type}
       placeholder={placeholder}
-      required={isRequired ? true : false}
+      required={!!isRequired}
       onChange={event => {
         onChangeAction({ ...formState, [name]: event.target.value })
       }}
@@ -34,7 +34,13 @@ const InputComponent = ({
   )
 }
 
-InputComponent.propTypes = {
+Input.defaultProps = {
+  bgColor: theme.colors['bg-primary'],
+  fontColor: theme.colors['font-primary'],
+  border: 'none'
+}
+
+Input.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
@@ -44,24 +50,21 @@ InputComponent.propTypes = {
   bgColor: PropTypes.string,
   fontColor: PropTypes.string,
   border: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number
+  height: PropTypes.string,
+  width: PropTypes.string
 }
 
-const Input = styled.input`
-  background-color: ${props => props.bgColor ?? theme.colors['bg-primary']};
-  border: ${props => props.border ?? `none`};
+const InputComponent = styled.input`
+  background-color: ${props => props.bgColor};
+  border: ${props => props.border};
   border-radius: 8px;
-  color: ${props => props.color ?? theme.colors['font-primary']};
+  color: ${props => props.color};
   font-family: ${theme.fonts['font-primary']};
   font-size: 15px;
-  height: ${props => props.height ?? 100}px;
-  width: ${props =>
-    props.width
-      ? theme.dimension.width - props.width
-      : theme.dimension.width - 130}px;
+  height: ${props => props.height};
+  width: ${props => props.width};
   padding: 0 20px;
   outline: none;
 `
 
-export default InputComponent
+export default Input

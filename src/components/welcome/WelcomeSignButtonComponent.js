@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { theme } from '../../config/theme'
 
 import { WrapperButton } from '../generic/Wrapper'
-import ButtonComponent from '../generic/ButtonComponent'
+import Button from '../generic/Button'
 
 const WelcomeSignButtonComponent = ({ welcomeState, displayForm }) => {
   const [propertyAnimation, setPropertyAnimation] = useState({
@@ -29,24 +29,26 @@ const WelcomeSignButtonComponent = ({ welcomeState, displayForm }) => {
       transition={{ duration: 1 }}
     >
       <WrapperButton margin={'20px 0 0 0'}>
-        <ButtonComponent
+        <Button
+          type={'button'}
           text='Sign In'
           action={() => displayForm('signin')}
           bgColor={theme.colors['btn-terciary']}
           fontColor={theme.colors['font-secondary']}
-          height={60}
-          width={170}
-        ></ButtonComponent>
+          height={'60px'}
+          width={'70%'}
+        />
       </WrapperButton>
       <WrapperButton margin={'20px 0 0 0'}>
-        <ButtonComponent
+        <Button
+          type={'button'}
           text='Sign Up'
           action={() => displayForm('signup')}
           bgColor={theme.colors['btn-terciary']}
           fontColor={theme.colors['font-secondary']}
-          height={60}
-          width={170}
-        ></ButtonComponent>
+          height={'60px'}
+          width={'70%'}
+        />
       </WrapperButton>
     </Wrapper>
   )
