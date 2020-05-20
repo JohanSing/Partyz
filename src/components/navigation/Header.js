@@ -3,32 +3,29 @@ import styled from 'styled-components'
 
 import { theme } from '../../config/theme'
 
-import { ReactComponent as LogoFemale } from '../../assets/undraw_male_avatar_323b.svg'
-import { ReactComponent as LogoMale } from '../../assets/undraw_female_avatar_w3jk.svg'
-import ButtonComponent from '../generic/ButtonComponent'
+import Avatar from '../generic/Avatar'
+import Button from '../generic/Button'
 
 const Header = () => {
-  const randomAvatar = () => Math.floor(Math.random() * 2)
-
   return (
     <HeaderContainer>
-      <HeaderProfile>
-        {randomAvatar() === 1 ? <Profile /> : <Profile />}
-      </HeaderProfile>
+      <Avatar size={'40px'} />
       <HeaderTitle>
         <HeaderTitleText>Parties</HeaderTitleText>
       </HeaderTitle>
       <HeaderAction>
-        <ButtonComponent
+        <Button
+          type={'button'}
           text='+'
           action={() => {}}
           bgColor={theme.colors['btn-terciary']}
           fontColor={theme.colors['font-secondary']}
-          height={40}
-          width={335}
-          borderRadius={'50'}
-          fontSize={18}
-        ></ButtonComponent>
+          height={'40px'}
+          width={'40px'}
+          borderRadius={'50px'}
+          fontSize={'18px'}
+          letterSpacing={'0px'}
+        />
       </HeaderAction>
     </HeaderContainer>
   )
@@ -38,16 +35,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 20px 0 10px 0;
-`
-
-const HeaderProfile = styled.div`
-  display: flex;
-`
-
-const Profile = styled(LogoMale, LogoFemale)`
-  height: 40px;
-  width: 40px;
+  padding: 20px 0;
 `
 
 const HeaderTitle = styled.div`
@@ -55,9 +43,10 @@ const HeaderTitle = styled.div`
 `
 
 const HeaderTitleText = styled.h1`
-  font-size: 16px;
+  font-size: 20px;
   font-family: ${theme.fonts['font-title']};
   font-weight: 400;
+  margin: 8px 0 0 0;
   color: ${theme.colors['font-secondary']};
 `
 
