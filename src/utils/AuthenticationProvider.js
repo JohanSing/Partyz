@@ -27,7 +27,12 @@ const getCurrentUser = () => {
   let accessToken = localStorage.getItem(SECURITY_ACCESS)
   accessToken = JSON.parse(accessToken)
 
-  return new User(accessToken.id, accessToken.email, accessToken.role)
+  return new User(
+    accessToken.id,
+    accessToken.email,
+    accessToken.role,
+    accessToken.authentication
+  )
 }
 
 export { checkAuthentication, getCurrentUser, SECURITY_ACCESS }
