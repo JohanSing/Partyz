@@ -21,7 +21,7 @@ const Footer = () => {
 }
 
 const WrapperFooter = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: ${theme.dimension.width}px;
   display: flex;
