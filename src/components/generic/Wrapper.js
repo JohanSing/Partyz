@@ -25,11 +25,12 @@ export const WrapperButton = styled.div`
 
 export const WrapperInput = styled.div`
   display: flex;
+  flex-direction: ${props => props.flexDirection ?? 'row'};
   width: ${props =>
     props.width
       ? theme.dimension.width - props.width
       : theme.dimension.width - 80}px;
-  justify-content: center;
+  justify-content: ${props => (props.justify ? props.justify : 'center')};
   margin: ${props => props.margin ?? 0};
   padding: ${props => props.padding ?? 0};
 `

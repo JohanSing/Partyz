@@ -9,6 +9,7 @@ import {
 import PrivateRoute from '../utils/PrivateRoute'
 import WelcomeScreen from '../screens/WelcomeScreen'
 import HomeScreen from '../screens/HomeScreen'
+import CreatePartyScreen from '../screens/CreatePartyScreen'
 
 const Routes = () => {
   return (
@@ -16,6 +17,7 @@ const Routes = () => {
       <Switch>
         <Route exact path='/' component={WelcomeScreen} />
         <PrivateRoute path='/home' component={HomeScreen} />
+        <PrivateRoute path='/parties/create' component={CreatePartyScreen} />
         <Redirect to='/home' />
       </Switch>
     </Router>

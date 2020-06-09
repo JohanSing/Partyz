@@ -28,6 +28,7 @@ const WrapperFooter = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding: 10px 0;
+  background-color: ${theme.colors['bg-secondary']};
 `
 
 const FooterBrand = styled.div`
