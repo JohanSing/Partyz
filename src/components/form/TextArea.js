@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 
 import { theme } from '../../config/theme'
 
-const Input = ({
+const TextArea = ({
   name,
-  type,
   placeholder,
   isRequired,
   formState,
@@ -18,8 +17,7 @@ const Input = ({
   width
 }) => {
   return (
-    <InputComponent
-      type={type}
+    <TextAreaComponent
       placeholder={placeholder}
       required={!!isRequired}
       onChange={event => {
@@ -34,15 +32,14 @@ const Input = ({
   )
 }
 
-Input.defaultProps = {
+TextArea.defaultProps = {
   bgColor: theme.colors['bg-primary'],
   fontColor: theme.colors['font-primary'],
   border: 'none'
 }
 
-Input.propTypes = {
+TextArea.propTypes = {
   name: PropTypes.string,
-  type: PropTypes.string,
   placeholder: PropTypes.string,
   isRequired: PropTypes.bool,
   formState: PropTypes.object,
@@ -54,7 +51,7 @@ Input.propTypes = {
   width: PropTypes.string
 }
 
-const InputComponent = styled.input`
+const TextAreaComponent = styled.textarea`
   background-color: ${props => props.bgColor};
   border: ${props => props.border};
   border-radius: 8px;
@@ -63,11 +60,11 @@ const InputComponent = styled.input`
   font-size: 15px;
   height: ${props => props.height};
   width: ${props => props.width};
-  padding: 0 20px;
+  padding: 20px;
   outline: none;
   &::placeholder {
     color: ${props => props.fontColor};
   }
 `
 
-export default Input
+export default TextArea

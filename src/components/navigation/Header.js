@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { theme } from '../../config/theme'
@@ -14,18 +15,20 @@ const Header = () => {
         <HeaderTitleText>Parties</HeaderTitleText>
       </HeaderTitle>
       <HeaderAction>
-        <Button
-          type={'button'}
-          text='+'
-          action={() => {}}
-          bgColor={theme.colors['btn-terciary']}
-          fontColor={theme.colors['font-secondary']}
-          height={'40px'}
-          width={'40px'}
-          borderRadius={'50px'}
-          fontSize={'18px'}
-          letterSpacing={'0px'}
-        />
+        <Link to='/parties/create'>
+          <Button
+            type={'button'}
+            text='+'
+            action={() => {}}
+            bgColor={theme.colors['btn-terciary']}
+            fontColor={theme.colors['font-secondary']}
+            height={'40px'}
+            width={'40px'}
+            borderRadius={'50px'}
+            fontSize={'18px'}
+            letterSpacing={'0px'}
+          />
+        </Link>
       </HeaderAction>
     </HeaderContainer>
   )

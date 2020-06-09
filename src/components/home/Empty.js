@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { theme } from '../../config/theme'
@@ -26,17 +27,19 @@ const Empty = () => {
         <EmptyMessage>Hurry up and create a party!</EmptyMessage>
       </Wrapper>
       <Wrapper margin={'50px 0 0 0'} padding={'0 50px'} bgColor={'transparent'}>
-        <Button
-          type={'button'}
-          text='New 🥳'
-          action={() => {}}
-          bgColor={theme.colors['btn-terciary']}
-          fontColor={theme.colors['font-secondary']}
-          height={'60px'}
-          width={'150px'}
-          borderRadius={'6px'}
-          fontSize={'18px'}
-        />
+        <Link to='/parties/create'>
+          <Button
+            type={'button'}
+            text='New 🥳'
+            action={() => {}}
+            bgColor={theme.colors['btn-terciary']}
+            fontColor={theme.colors['font-secondary']}
+            height={'60px'}
+            width={'150px'}
+            borderRadius={'6px'}
+            fontSize={'18px'}
+          />
+        </Link>
       </Wrapper>
     </Wrapper>
   )

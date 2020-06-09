@@ -43,7 +43,7 @@ const HomeScreen = () => {
     <ContainerScreen bgColor={theme.colors['bg-secondary']}>
       <Header />
       {loading && <Loader />}
-      {events.length === 0 && <Empty />}
+      {!loading && events.length === 0 && <Empty />}
       {!loading && events.length > 0 && (
         <Wrapper
           bgColor={'transparent'}

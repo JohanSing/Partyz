@@ -6,13 +6,15 @@ import { FaChevronLeft } from 'react-icons/fa'
 
 import { theme } from '../../config/theme'
 
-const ButtonBack = ({ action, bgcolor, fontcolor }) => {
+const ButtonBack = ({ action, bgcolor, fontcolor, margin, padding }) => {
   return (
     <WrapperButtonBack
       bgcolor={bgcolor}
       onClick={() => {
         action(null)
       }}
+      margin={margin}
+      padding={padding}
     >
       <IconChevron fontcolor={fontcolor} />
       <IconText fontcolor={fontcolor}>Back</IconText>
@@ -28,17 +30,19 @@ ButtonBack.defaultProps = {
 ButtonBack.propTypes = {
   action: PropTypes.func,
   bgcolor: PropTypes.string,
-  fontcolor: PropTypes.string
+  fontcolor: PropTypes.string,
+  margin: PropTypes.string,
+  padding: PropTypes.string
 }
 
 const WrapperButtonBack = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  padding: 5px 10px;
+  padding: ${props => props.padding ?? '5px 10px'};
   border-radius: 6px;
   width: 60px;
-  margin: 30px 0 0 35px;
+  margin: ${props => props.margin};
   background-color: ${props => props.bgcolor};
 `
 
