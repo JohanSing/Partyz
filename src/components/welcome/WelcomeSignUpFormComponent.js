@@ -61,6 +61,8 @@ const WelcomeSignUpFormComponent = ({
           action={setAuthState}
           bgcolor={theme.colors['btn-terciary']}
           fontcolor={theme.colors['font-secondary']}
+          margin='30px 0 0 35px'
+          padding='5px 10px'
         />
         <FormSign onSubmit={handleSubmit}>
           <WrapperInput width={20} margin={'20px 0 0 0'}>
@@ -71,7 +73,7 @@ const WelcomeSignUpFormComponent = ({
               formState={formSignUpState}
               onChangeAction={setFormSignUpState}
               bgColor={theme.colors['btn-fourth']}
-              fontColor={theme.colors['btn-primary']}
+              fontColor={theme.colors['font-primary']}
               height={'60px'}
               width={'70%'}
             />
@@ -84,7 +86,7 @@ const WelcomeSignUpFormComponent = ({
               formState={formSignUpState}
               onChangeAction={setFormSignUpState}
               bgColor={theme.colors['btn-fourth']}
-              fontColor={theme.colors['btn-primary']}
+              fontColor={theme.colors['font-primary']}
               height={'60px'}
               width={'70%'}
             />

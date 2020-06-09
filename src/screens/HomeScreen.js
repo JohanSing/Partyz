@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import { theme } from '../config/theme'
 
 import { getOnlineEvents } from '../utils/APIEvents'
@@ -43,7 +42,7 @@ const HomeScreen = () => {
     <ContainerScreen bgColor={theme.colors['bg-secondary']}>
       <Header />
       {loading && <Loader />}
-      {events.length === 0 && <Empty />}
+      {!loading && events.length === 0 && <Empty />}
       {!loading && events.length > 0 && (
         <Wrapper
           bgColor={'transparent'}

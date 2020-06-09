@@ -5,6 +5,7 @@ import { theme } from '../../config/theme'
 export const ContainerScreen = styled.div`
   width: ${theme.dimension.width}px;
   height: ${theme.dimension.height}px;
+  padding: ${props => props.padding ?? '0px'};
   background-color: ${props => props.bgColor ?? theme.colors['bg-primary']};
 `
 

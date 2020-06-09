@@ -16,4 +16,31 @@ const getOnlineEvents = async securityAccess => {
   return response.data
 }
 
-export { getOnlineEvents }
+const createEvent = async (securityAccess, payload) => {
+  try {
+    await axios.post(
+      URL_EVENTS,
+      {
+        title: payload.title,
+        description: payload.description,
+        date: payload.date,
+        address: payload.address,
+        organizer: securityAccess.getId(),
+        foods: [],
+        guests: [],
+        online: true
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${securityAccess.getAuthentication()}`
+        }
+      }
+    )
+  } catch (err) {
+    console.log(err.response)
+  }
+
+  return true
+}
+
+export { getOnlineEvents, createEvent }
